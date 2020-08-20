@@ -1,3 +1,19 @@
 .logo_img {
     width: 100%;
 }
+
+.current_weather_title {
+    font-size: 25px;
+    font-weight: 100;
+    letter-spacing: 8px;
+}
+
+.current_weather_subtitle {
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.legend {
+    padding: 2% 5%;
+}
+

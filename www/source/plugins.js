@@ -1,2 +1,1 @@
-// This is a JavaScript file
-
+$("input[name=CEP]").mask("00000-000");
