@@ -101,7 +101,7 @@ body {
 
 body.is-scroll {
     background-attachment: scroll, scroll;
-    background-size: auto, 100% auto;
+    background-size: auto, 400% auto;
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -160,7 +160,7 @@ a {
     -webkit-transition: border-color 0.35s ease-in-out, color 0.35s ease-in-out;
     -ms-transition: border-color 0.35s ease-in-out, color 0.35s ease-in-out;
     transition: border-color 0.35s ease-in-out, color 0.35s ease-in-out;
-    color: #35b88f;
+    color: #000000;
     text-shadow: 0 0 0.5px rgba(53, 184, 143, 0.25);
     text-decoration: none;
     border-bottom: dotted 1px rgba(53, 184, 143, 0.5);
@@ -1748,7 +1748,7 @@ button,
     position: relative;
     display: inline-block;
     border: 0;
-    background: #35b88f;
+    background: #000000;
     color: #fff;
     text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25);
     cursor: pointer;
@@ -1812,6 +1812,7 @@ button.style3:hover,
     position: relative;
     margin-top: 9em;
     margin-bottom: 0;
+    background-color: red;
 }
 
 .box:after {
@@ -2091,7 +2092,7 @@ body.is-preload #header footer {
     color: #fff;
     text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.25);
     text-align: center;
-    background: #35b88f url("images/banner.svg") bottom center no-repeat;
+    background: #000000 url("images/banner.svg") bottom center no-repeat;
     padding: 5em 0 5em 0;
     margin: 0;
     background-size: 125% auto;
@@ -2156,7 +2157,7 @@ body.is-preload #header footer {
 }
 
 #footer a:hover {
-    color: #35b88f;
+    color: #000000;
     text-shadow: 0 0 0.5px rgba(69, 200, 159, 0.25);
     border-bottom-color: rgba(53, 184, 143, 0.5);
 }
@@ -2355,7 +2356,7 @@ body.is-preload #header footer {
     body {
         background-color: #203936;
         background-image: url("images/overlay.png"), url("../../images/bg-alt.jpg");
-        background-repeat: repeat, no-repeat;
+        background-repeat: repeat, repeat;
         background-size: auto, 200% auto;
         background-position: top left, top center;
         background-attachment: scroll, scroll;
@@ -2379,6 +2380,7 @@ body.is-preload #header footer {
 
     .box {
         position: relative;
+        background-color: red;
     }
 
     .box section {
@@ -2420,7 +2422,7 @@ body.is-preload #header footer {
 
     #banner {
         padding: 3.5em;
-        background-size: 200% auto;
+        background-size: 300% auto;
     }
 
     #banner br {
@@ -2512,6 +2514,7 @@ body.is-preload #header footer {
 
     .box {
         margin-top: 4.5em;
+        background-color: red;
     }
 
     .box:after {
@@ -2644,4 +2647,98 @@ body.is-preload #header footer {
         opacity: 0.5;
     }
 
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #212529;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
