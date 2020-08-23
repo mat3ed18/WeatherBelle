@@ -1,7 +1,6 @@
 $("input[name=CEP]").mask("00000-000");
 
-var key = "007ed380";
-
+var key = "3ad51aa7";
 var key2 = "bc07852d7ecb4d84b6b4a266d01cdef6";
 
 function getAJAX(typed, link, callback) {
@@ -16,37 +15,6 @@ function getAJAX(typed, link, callback) {
         }
     });
 }
-
-$(document).ready(function () {
-    if (verficaConexao() == "OFFLINE") {
-        navigator.notification.alert("Você está sem REDE", sair, "Não podemos continuar", "OK");
-    }
-    loadMap();
-    loadPage();
-    setTimeout(function () {
-        if ($("#map").html() == "") {
-            $("#map").html("Ative sua localização e reinicie o aplicativo novamente!");
-            $("#map").css({ backgroundColor: "rgba(0,0,0,0.8)", color: "white", textAlign: "center", paddingTop: "3%" });
-        }
-    }, 10000);
-
-    getAJAX("get", "https://servicodados.ibge.gov.br/api/v1/localidades/estados", function (response) {
-        var dados = JSON.parse(JSON.stringify(response));
-        for (var i = 0; i < dados.length; i++) {
-            $("select[name=UF]").append("<option value=\"" + dados[i].sigla + "\">" + dados[i].nome + "</option>");
-        }
-    });
-});
-
-$("select[name=UF]").change(function () {
-    $("select[name=CIDADE]").html("<option value=\"\">-</option>");
-    getAJAX("get", "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + $("select[name=UF]").val() + "/municipios", function (response) {
-        var dados = JSON.parse(JSON.stringify(response));
-        for (var i = 0; i < dados.length; i++) {
-            $("select[name=CIDADE]").append("<option value=\"" + dados[i].nome + "\">" + dados[i].nome + "</option>");
-        }
-    });
-});
 
 function sair() {
     navigator.app.exitApp();
@@ -231,7 +199,53 @@ function loadPage() {
     };
 
     navigator.geolocation.getCurrentPosition(sucesso);
+
+    var city = [["Peruibe", "SP"], ["Itanhaém", "SP"], ["Mongaguá", "SP"], ["Praia Grande", "SP"], ["São Vicente", "SP"], ["Santos", "SP"], ["Bertioga", "SP"], ["Guarujá", "SP"]];
+
+    for (var i = 0; i < city.length; i++) {
+        getAJAX("get", "https://api.hgbrasil.com/weather?key=" + key + "&city_name=" + city[i][0] + "," + city[i][1], function (response) {
+            var data = JSON.parse(JSON.stringify(response));
+            if (data != null) {
+                if (data.results != null) {
+                    var conteudo = "<tr>";
+                    conteudo += "<td>" + data.results.city + "</td>";
+                    conteudo += "<td>" + data.results.forecast[0].min + "º</td>";
+                    conteudo += "<td><b>" + data.results.forecast[0].max + "º</b></td>";
+                    conteudo += "<td>" + data.results.description + "</td>";
+                    var style = "background-size: 100%; background-repeat: no-repeat; background-position: center;";
+                    conteudo += "<td class=\"lbl_image\" style=\"background: url('" + iconWeather(50, data.results.description) + "'); " + style + "\"></td>";
+                    conteudo += "<td></td>";
+                    conteudo += "</tr>";
+                    $("#tb_cities_weather").append(conteudo);
+                } else {
+                    var error = JSON.parse(JSON.stringify(response.responseJSON));
+                    navigator.notification.alert(error.message, null, "ERRO!", "OK");
+                }
+            }
+        });
+    }  
 }
+
+$(document).ready(function () {
+    if (verficaConexao() == "OFFLINE") {
+        navigator.notification.alert("Você está sem REDE", sair, "Não podemos continuar", "OK");
+    }
+    loadMap();
+    loadPage();
+    setTimeout(function () {
+        if ($("#map").html() == "") {
+            $("#map").html("Ative sua localização e reinicie o aplicativo novamente!");
+            $("#map").css({ backgroundColor: "rgba(0,0,0,0.8)", color: "white", textAlign: "center", paddingTop: "3%" });
+        }
+    }, 10000);
+
+    getAJAX("get", "https://servicodados.ibge.gov.br/api/v1/localidades/estados", function (response) {
+        var dados = JSON.parse(JSON.stringify(response));
+        for (var i = 0; i < dados.length; i++) {
+            $("select[name=UF]").append("<option value=\"" + dados[i].sigla + "\">" + dados[i].nome + "</option>");
+        }
+    });
+});
 
 $(document).on("click", "#myBtn", function () {
     $("#myModal").fadeIn(500);
@@ -240,12 +254,6 @@ $(document).on("click", "#myBtn", function () {
 $(document).on("click", ".close", function () {
     $("#myModal").fadeOut(500);
 });
-
-window.onclick = function (event) {
-    if (event.target == document.getElementById("myModal")) {
-        $("#myModal").fadeOut(500);
-    }
-}
 
 $(document).on("click", ".form_cep", function () {
     getAJAX("get", "https://viacep.com.br/ws/" + $("input[name=CEP]").val().replace("-", "") + "/json/", function (response) {
@@ -355,4 +363,20 @@ $(document).on("click", ".form_city", function () {
         }
     });
 });
+
+$("select[name=UF]").change(function () {
+    $("select[name=CIDADE]").html("<option value=\"\">-</option>");
+    getAJAX("get", "https://servicodados.ibge.gov.br/api/v1/localidades/estados/" + $("select[name=UF]").val() + "/municipios", function (response) {
+        var dados = JSON.parse(JSON.stringify(response));
+        for (var i = 0; i < dados.length; i++) {
+            $("select[name=CIDADE]").append("<option value=\"" + dados[i].nome + "\">" + dados[i].nome + "</option>");
+        }
+    });
+});
+
+window.onclick = function (event) {
+    if (event.target == document.getElementById("myModal")) {
+        $("#myModal").fadeOut(500);
+    }
+}
 

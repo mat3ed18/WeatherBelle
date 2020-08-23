@@ -1,192 +1,190 @@
 <html>
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
 
-	<link rel="stylesheet" href="source/estilo.css">
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
+        <link rel="stylesheet" href="source/estilo.css">
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
 
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" />
-	</noscript>
-	<script src="components/loader.js"></script>
-	<script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
-</head>
+        <noscript>
+            <link rel="stylesheet" href="assets/css/noscript.css" />
+        </noscript>
+        <script src="components/loader.js"></script>
+        <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
+    </head>
 
-<body class="is-preload">
-	<!-- Header -->
-	<section id="header">
-		<header>
-			<img src="img/logo.png" class="logo_img">
-			<h5>Consulta de CEP e Previsão do Tempo</h5>
-		</header>
-		<footer>
-			<a href="#banner" class="button style2 scrolly">Conheça</a>
-		</footer>
-	</section>
+    <body class="is-preload">
+        <!-- Header -->
+        <section id="header">
+            <header>
+                <img src="img/logo.png" class="logo_img">
+                <h5>Consulta de CEP e Previsão do Tempo</h5>
+            </header>
+            <footer>
+                <a href="#banner" class="button style2 scrolly">Conheça</a>
+            </footer>
+        </section>
 
-	<div id="map"></div>
+        <div id="map"></div>
 
-	<!-- Banner -->
-	<section id="banner">
-		<header>
-			<small>Você está em</small><br>
-			<h2 id="ban_city"></h2>
-			<hr>
-		</header>
-		<main class="row banner_main">
+        <!-- Banner -->
+        <section id="banner">
+            <header>
+                <small>Você está em</small><br>
+                <h2 id="ban_city"></h2>
+                <hr>
+            </header>
+            <main class="row banner_main">
 
-		</main>
-		<hr>
-		<footer><a href="#first" class="button style2 scrolly">PRÓXIMO</a></footer>
-	</section>
+            </main>
+            <hr>
+            <footer>
+                <a href="#container_form" class="button style2 scrolly">PRÓXIMO</a>
+            </footer>
+        </section>
 
-	<div class="main_sections">
+        <div class="main_sections" id="container_form">
 
-		<!-- CEP -->
-		<article class="container box style3">
-			<header>
-				<h1 class="current_weather_subtitle">CONSULTA DE CEP</h1>
-				<p class="legend">Digite o CEP para buscar previsões climáticas em regiões de todo Brasil.</p>
-			</header>
-			<form method="post" action="#">
-				<div class="row gtr-50">
-					<div class="col-12 col-12-mobile">
-                        <input type="text" class="text" name="CEP" placeholder="Digite o código postal da sua cidade e/ou região." required>
+            <!-- CEP -->
+            <article class="container box style3">
+                <header>
+                    <h1 class="current_weather_subtitle">CONSULTA DE CEP</h1>
+                    <p class="legend">Digite o CEP para buscar previsões climáticas em regiões de todo Brasil.</p>
+                </header>
+                <form method="post" action="#">
+                    <div class="row gtr-50">
+                        <div class="col-12 col-12-mobile">
+                            <input type="text" class="text" name="CEP" placeholder="Digite o código postal da sua cidade e/ou região." required>
                         </div>
-					<div class="col-12">
-						<ul class="actions">
-							<li>
-								<a href="#banner" class="btn btn-primary style2 scrolly form_cep">Enviar</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</form>
-		</article>
+                        <div class="col-12">
+                            <ul class="actions">
+                                <li>
+                                    <a href="#banner" class="btn btn-primary style2 scrolly form_cep">Enviar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </article>
 
-		<!-- CIDADE -->
-		<article class="container box style3">
-			<header>
-				<h1 class="current_weather_subtitle">CONSULTA DE CIDADE</h1>
-				<p class="legend">Selecione o estado e a cidade desejada para buscar previsões climáticas em regiões de todo Brasil.</p>
-			</header>
-			<form method="post" action="#">
-				<div class="row gtr-50">
-					<div class="col-4 col-4-mobile">
-						<select class="text" name="UF" placeholder="Digite o código postal da sua cidade e/ou região.">
-                            <option value="">-</option>
-                        </select>
-					</div>
-					<div class="col-8 col-8-mobile">
-						<select class="text" name="CIDADE" placeholder="Digite o código postal da sua cidade e/ou região.">
-                            <option value="">-</option>
-                        </select>
-					</div>
-					<div class="col-12">
-						<ul class="actions">
-							<li>
-								<a href="#banner" class="btn btn-primary style2 scrolly form_city">Enviar</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</form>
-		</article>
+            <!-- CIDADE -->
+            <article class="container box style3">
+                <header>
+                    <h1 class="current_weather_subtitle">CONSULTA DE CIDADE</h1>
+                    <p class="legend">Selecione o estado e a cidade desejada para buscar previsões climáticas em regiões de todo Brasil.</p>
+                </header>
+                <form method="post" action="#">
+                    <div class="row gtr-50">
+                        <div class="col-4 col-4-mobile">
+                            <select class="text" name="UF" placeholder="Digite o código postal da sua cidade e/ou região.">
+                                <option value="">-</option>
+                            </select>
+                        </div>
+                        <div class="col-8 col-8-mobile">
+                            <select class="text" name="CIDADE" placeholder="Digite o código postal da sua cidade e/ou região.">
+                                <option value="">-</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <ul class="actions">
+                                <li>
+                                    <a href="#banner" class="btn btn-primary style2 scrolly form_city">Enviar</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </article>
 
-		<!-- PREVISÃO DO TEMPO NA REGIÃO -->
+            <!-- PREVISÃO DO TEMPO NA REGIÃO -->
 
-		<article class="container box style3">
-			<header>
-				<h1 class="current_weather_subtitle">PREVISÃO DO TEMPO</h1>
-				<p class="legend">Confira a previsão do tempo na sua região</p>
-			</header>
-			<section>
-				<div class="table-wrapper">
-					<table>
-						<thead>
-							<tr>
-								<th>CIDADE</th>
-								<th>CONDIÇÃO</th>
-								<th>MIN.</th>
-								<th>MAX.</th>
-								<th></th>
+            <article class="container box style3">
+                <header>
+                    <h1 class="current_weather_subtitle">PREVISÃO DO TEMPO</h1>
+                    <p class="legend">Confira a previsão do tempo na sua região</p>
+                </header>
+                <section>
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>CIDADE</th>
+                                    <th>MIN.</th>
+                                    <th>MAX.</th>
+                                    <th>CONDIÇÃO</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="tb_cities_weather">
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </article>
 
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Itanhaém - SP</td>
-								<td>Ensolarado</td>
-								<td>15º</td>
-								<td>40º</td>
-								<td><img src="https://img.icons8.com/color/20/000000/partly-cloudy-rain.png" /></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</section>
-		</article>
+            <section id="footer">
+                <ul class="icons">
+                    <li>
+                        <a href="#" class="icon brands fa-linkedin-in" onclick="window.open('https://www.linkedin.com/in/mateus-silva-developer/', '_system');">
+                            <span class="label">LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon brands fa-github" onclick="window.open('https://github.com/mat3ed18/', '_system');">
+                            <span class="label">Git Hub</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
 
-		<section id="footer">
-			<ul class="icons">
-				<li>
-					<a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
-				</li>
-				<li>
-					<a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a>
-				</li>
-				<li>
-					<a href="#" class="icon brands fa-google-plus-g"><span class="label">Google+</span></a>
-				</li>
-				<li>
-					<a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a>
-				</li>
-				<li>
-					<a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a>
-				</li>
-				<li>
-					<a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a>
-				</li>
-			</ul>
-			<div class="copyright">
-				<ul class="menu">
-					<li>&copy; Untitled. All rights reserved.</li>
-					<li>Design:
-						<a href="http://html5up.net">HTML5 UP</a>
-					</li>
-				</ul>
-			</div>
-		</section>
+        </div>
 
-	</div>
+        <!-- <button id="myBtn">Open Modal</button>
 
-	<button id="myBtn">Open Modal</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content container box style3">
+                <span class="close">&times;</span>
+                <div class="row gtr-50">
+                    <h1 class="col-12 col-12-mobile">PERUÍBE-SP</h1>
+                    
+                    <h3 class="col-6 col-6-mobile">ABC</h3>
+                    <h3 class="col-6 col-6-mobile">DEF</h3>
 
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
+                    <h3 class="col-4 col-4-mobile">ABC</h3>
+                    <h3 class="col-4 col-4-mobile">DEF</h3>
+                    <h3 class="col-4 col-4-mobile">ABC</h3>
 
-		<!-- Modal content -->
-		<div class="modal-content container box style3">
-			<span class="close">&times;</span>
-		</div>
-	</div>
+                    <h3 class="col-3 col-3-mobile">ABC</h3>
+                    <h3 class="col-3 col-3-mobile">DEF</h3>
+                    <h3 class="col-3 col-3-mobile">ABC</h3>
+                    <h3 class="col-3 col-3-mobile">DEF</h3>
 
-    <div id="city"></div>
+                    <h3 class="col-2 col-2-mobile">ABC</h3>
+                    <h3 class="col-2 col-2-mobile">DEF</h3>
+                    <h3 class="col-2 col-2-mobile">ABC</h3>
+                    <h3 class="col-2 col-2-mobile">DEF</h3>
+                    <h3 class="col-2 col-2-mobile">ABC</h3>
+                    <h3 class="col-2 col-2-mobile">DEF</h3>
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.scrolly.min.js"></script>
-	<script src="assets/js/jquery.poptrox.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="source/jquery.mask.min.js"></script>
-	<script src="source/plugins.js"></script>
-</body>
+                    <h3 class="col-12 col-12-mobile">DEF</h3>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="source/jquery.mask.min.js"></script>
+        <script src="source/plugins.js"></script>
+    </body>
 
 </html>
