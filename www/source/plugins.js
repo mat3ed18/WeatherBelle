@@ -1,6 +1,6 @@
 $("input[name=CEP]").mask("00000-000");
 
-var key = "3ad51aa7";
+var key = "c343c5cb";
 var key2 = "bc07852d7ecb4d84b6b4a266d01cdef6";
 
 function getAJAX(typed, link, callback) {
@@ -200,7 +200,7 @@ function loadPage() {
 
     navigator.geolocation.getCurrentPosition(sucesso);
 
-    var city = [["Peruibe", "SP"], ["Itanhaém", "SP"], ["Mongaguá", "SP"], ["Praia Grande", "SP"], ["São Vicente", "SP"], ["Santos", "SP"], ["Bertioga", "SP"], ["Guarujá", "SP"]];
+    var city = [["Peruibe", "SP"], ["Itanhaém", "SP"], ["Mongaguá", "SP"], ["Praia Grande", "SP"], ["Santos", "SP"], ["Bertioga", "SP"], ["Guarujá", "SP"]];
 
     for (var i = 0; i < city.length; i++) {
         getAJAX("get", "https://api.hgbrasil.com/weather?key=" + key + "&city_name=" + city[i][0] + "," + city[i][1], function (response) {
